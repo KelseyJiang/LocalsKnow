@@ -1,0 +1,2 @@
+webuser = "root"
+webhost = "localhost"
