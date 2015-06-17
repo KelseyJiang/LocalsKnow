@@ -44,15 +44,16 @@ def cities_input():
 
 @app.route('/output')
 def cities_output():
-  #pull 'ID' from input field and store it
+  #pull 'language' and 'city' from input field and store it
   language = request.args.get('language')
   city = request.args.get('city')
-  mydatatable = assign_datatable(lang = language, city = city)
+  mydatatable = assign_datatable(lang = language, city = city)[0]
+  rankby = assign_datatable(lang = language, city = city)[1]
   
   with db:
     cur = db.cursor()
     #just select the city from the world_innodb that the user inputs
-    cur.execute("SELECT loc_name, loc_id, loc_latitude, loc_longitude, fr_count, eng_count, total_count FROM %s ORDER BY eng_count DESC;" % mydatatable)
+    cur.execute("SELECT loc_name, loc_id, loc_latitude, loc_longitude, fr_count, eng_count, total_count FROM %s ORDER BY %s DESC;" % (mydatatable, rankby))
     #cur.execute("SELECT Name, CountryCode,  Population FROM City WHERE Name='%s';" % city)
     query_results = cur.fetchall()
     
