@@ -61,7 +61,10 @@ def cities_output():
     sites = []
     for result in query_results:
         sites.append(dict(name=result[0], latitude=result[2], longitude = result[3]))
-    return render_template('output.html', cities=sites)
+    return render_template('output.html', 
+                            cities=sites, 
+                            map_latitude = [sites[i].get('latitude') for i in range(0,len(city))],
+                            map_longitude = [sites[i].get('longitude') for i in range(0,len(city))] )
   
  #  #call a function from a_Model package. note we are only pulling one result in the query
 #   pop_input = cities[0]['latitude']

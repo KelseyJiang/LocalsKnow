@@ -6,8 +6,8 @@ body {
   text-align: center;
 }
 
-#map { height: 379px; 
-       width: 614px;
-       margin-left: 78.5px;
+#map { height: 495px; 
+       width: 800px;
+       margin-left: 200px;
        margin-top: 30px;
      }
