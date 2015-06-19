@@ -50,6 +50,7 @@
     </nav>
 
 
+
 <br><br>
 
   <div class="container">
@@ -92,7 +93,10 @@
       {% for city in cities %}
       <tr><td>{{ city['name'] }}</td><td>{{ city['latitude']}}</td><td> {{ city['longitude'] }}</td></tr>
       {% endfor %}
-      </table>
+      </table> 
+      
+        
+ 
 
 
     </div><!-- /.container -->
@@ -118,8 +122,7 @@
   <script>
   
   // Import latitude and longitude 
-  //var map_latitude = {{ map_latitude}}
-  //var map_longitude = {{ map_longitude }}
+  var coords = {{coords}};
   
   // create a map in the "map" div, set the view to a given place and zoom
   var map = L.map('map').setView([48.8567, 2.3508], 13);
@@ -131,15 +134,26 @@
     id: 'kelseyjiang.66ad7775',
     accessToken: 'pk.eyJ1Ijoia2Vsc2V5amlhbmciLCJhIjoiYTFmMDU0MjI5OGE2OTY3OTg0NTljOWY2OTc3MGJjOGYifQ.JNizwGIYmRYSfS21w4a7WQ'
     }).addTo(map);
+   
+  // add sites to the map 
+    var length = {{length}};
+    var color = {{color | safe }};
+
+    for (var i = 0; i < length; i++) {
+        var circle = L.circle(
+            coords[i],
+            50,
+            {
+                color: color[i],
+                fillColor: color[i],
+                fillOpacity: 0.8
+            }
+        ).addTo(map);
+    }
+   
+   
     
-     //var circle = L.circle([map_latitude, map_longitude], 50, {
-     //color: 'red',
-     //fillColor: '#f03',
-     //fillOpacity: 0.5
-     //}).addTo(map); 
-    
-    
-  </script>
+   </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

@@ -3,6 +3,7 @@ from app import app
 import pymysql as mdb
 from a_Model import ModelIt
 from datatable import assign_datatable
+import json
 import globals
 
 
@@ -49,22 +50,33 @@ def cities_output():
   city = request.args.get('city')
   mydatatable = assign_datatable(lang = language, city = city)[0]
   rankby = assign_datatable(lang = language, city = city)[1]
-  
+  col = ['#6E6E6E', '#610B0B','#FF0000', '#DF3A0', '#DF7401','#DBA901', '#D7DF01', '#A5DF00', '#74DF00','#3ADF00','#00BFFF','#0080FF','#0040FF','#0000FF','#4000FF','#FE2EF7', '#5F4C0B','#61380B','#2E2E2E']
+  #col = ['#2E2E2E','#DF0101','#8A0808','#FF8000','#BFFF00','#40FF00','#00FFFF','#0040FF','#8000FF','#F781F3','#F5A9BC','#FF8000','#B18904','#B18904','#B18904','#B18904','#B18904','#B18904','#B18904','#B18904']
+ 
+ 
   with db:
     cur = db.cursor()
     #just select the city from the world_innodb that the user inputs
-    cur.execute("SELECT loc_name, loc_id, loc_latitude, loc_longitude, fr_count, eng_count, total_count FROM %s ORDER BY %s DESC;" % (mydatatable, rankby))
-    #cur.execute("SELECT Name, CountryCode,  Population FROM City WHERE Name='%s';" % city)
+    cur.execute("SELECT loc_name, loc_id, loc_latitude, loc_longitude, cluster FROM %s ORDER BY %s DESC;" % (mydatatable, rankby))
     query_results = cur.fetchall()
     
     
     sites = []
+    site_color =[]
     for result in query_results:
-        sites.append(dict(name=result[0], latitude=result[2], longitude = result[3]))
+        sites.append(dict(name=result[0], latitude=result[2], longitude = result[3], cluster = result[4])) 
+    site_coords = [(site['latitude'], site['longitude']) for site in sites]
+    site_cluster = [site['cluster']+1 for site in sites]
+    
+    for i in range(len(site_coords)):
+        site_color.append(col[site_cluster[i]])
+        print col[site_cluster[i]]
+        
     return render_template('output.html', 
                             cities=sites, 
-                            map_latitude = [sites[i].get('latitude') for i in range(0,len(city))],
-                            map_longitude = [sites[i].get('longitude') for i in range(0,len(city))] )
+                            coords = json.dumps(list(site_coords)),
+                            color = json.dumps(list(site_color)),
+                            length = len(site_coords))
   
  #  #call a function from a_Model package. note we are only pulling one result in the query
 #   pop_input = cities[0]['latitude']
