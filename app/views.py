@@ -47,9 +47,11 @@ def cities_input():
 def cities_output():
   #pull 'language' and 'city' from input field and store it
   language = request.args.get('language')
-  city = request.args.get('city')
-  mydatatable = assign_datatable(lang = language, city = city)[0]
-  rankby = assign_datatable(lang = language, city = city)[1]
+  #city = request.args.get('city')
+  mydatatable = assign_datatable(lang = language)[0]
+  rankby = assign_datatable(lang = language)[1]
+  #mydatatable = assign_datatable(lang = language, city = city)[0]
+  #rankby = assign_datatable(lang = language, city = city)[1]
   col = ['#6E6E6E', '#FF0000','#610B0B', '#01DFD7', '#DF7401','#DBA901', '#D7DF01', '#A5DF00', '#74DF00','#3ADF00','#00BFFF','#0080FF','#0040FF','#0000FF','#4000FF','#FE2EF7', '#5F4C0B','#61380B','#2E2E2E']
   #col = ['#2E2E2E','#DF0101','#8A0808','#FF8000','#BFFF00','#40FF00','#00FFFF','#0040FF','#8000FF','#F781F3','#F5A9BC','#FF8000','#B18904','#B18904','#B18904','#B18904','#B18904','#B18904','#B18904','#B18904']
  

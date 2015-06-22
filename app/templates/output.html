@@ -23,7 +23,7 @@
     
     <!-- Leaflet.js -->
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
-    
+   
   </head>
 
   <body>
@@ -37,7 +37,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Locals Know!</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -51,28 +51,19 @@
     
 <br><br>
 
-  <div class="container">
-    <div class="starter-template">
-        <h2>Locals Know</h2>
-        <p>Enter some user input</p>
-    </div>
+  
 
-    <div class = "container">
-
-      <form  action="/output" method="GET">
-        <div class="form-group">
-          <label for="language">Language:</label>
-          <input type="text" id="language" name='language' placeholder="e.g. ">
-          <!-- <input type="text" id="language" name='language' placeholder="e.g. "> -->
-          <label for="city">City  Name:</label>
-          <input type="text" id="city" name='city' placeholder="e.g. ">
-          <!-- <input type="text" id="city" name='city' placeholder="e.g. "> -->
-        </div>
-        <div>
-          <button type="submit" class="btn btn-default btn-lg">Find this city!</button>
-        </div>
-      </form>
-    </div>
+     <div class = "container" align="center" valign="center" >
+        <form action="/output" method="GET">
+            <input type="radio" id = "language" name="language" value="english" style="margin-right: 13px"/> An English Speaker&#8194 
+            <input type="radio" id = "language" name="language" value="french" style="margin-right: 13px"/>A French Speaker&#8194     
+            <input type="radio" id = "language" name="language" value="locals" style="margin-right: 13px"/>  A Local &#8194
+            <button type="submit" class="btn btn-primary btn-lg" ><h3>Go!</h3>
+        </form>
+      </div>
+     
+     
+ 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
 
@@ -80,34 +71,39 @@
 
   <div id="map"></div>
   
-  <div class="container">
-      <div class="starter-template">
-        <h3>Results:</h3>
-        <p class="lead">Below is the result of your query.<br> Now we need to expand the functionality!</p>
+  <div class="container-fluid">
+      <div class="row">                   
+          <h3><div class="col-md-1"></div></h3>
+          <div class="col-md-1" style = "background-color: #FF0000; color:#FF0000;">___</div>
+          <div class="col-md-1" style = "background-color: #610B0B; color: #610B0B">___</div>
+          <div class="col-md-1" style = "background-color: #01DFD7; color: #01DFD7">___</div>
+          <div class="col-md-1" style = "background-color: #DF7401; color: #DF7401">___</div>
+          <div class="col-md-1" style = "background-color: #DBA901; color: #DBA901">___</div>
+          <div class="col-md-1" style = "background-color: #D7DF01; color: #D7DF01">___</div>
+          <div class="col-md-1" style = "background-color: #A5DF00; color: #A5DF00">___</div>
+          <div class="col-md-1" style = "background-color: #74DF00; color: #74DF00">___</div>
+          <div class="col-md-1" style = "background-color: #3ADF00; color: #3ADF00">___</div>
+          <div class="col-md-1" style = "background-color: #00BFFF; color: #00BFFF">___</div>
+          <h3><div class="col-md-1"></div></h3>
+          
       </div>
+  </div>
+  
+    <div class="container2">
+    <div class="starter-template2">
+        <h2> &nbsp;+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Popularity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;</h2>
+    </div>
+    </div>
+  
+  
+  
 
-      <table class="table table-hover">
-      <tr><th>Name</th><th>Latitude</th><th>Longitude</th><th>Cluster</th></tr>
-      {% for city in cities %}
-      <tr><td>{{ city['name'] }}</td><td>{{ city['latitude']}}</td><td> {{ city['longitude'] }}</td><td> {{ city['cluster'] }}</td></tr>
-      {% endfor %}
-      </table> 
-      
-        
- 
-
-
-    </div><!-- /.container -->
     
   <div class="container">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
     </div><!-- /.container -->
      
-  <div class="container">
-      <div class="starter-template">
-        <h3>Another Result:</h3>
-        <p class="lead">Now we've taken the input and called a function from your package.<br>The result is {{the_result}}</p>
-      </div>
+  
 
       <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
        <!-- <script src="static/js/bootstrap.min.js"></script>-->
@@ -148,7 +144,7 @@
                 fillColor: color[i],
                 fillOpacity: 0.8
             }
-        ).addTo(map);circle.bindPopup(url[i]).openPopup();
+        ).addTo(map);circle.bindPopup(url[i]);
     }
 
    

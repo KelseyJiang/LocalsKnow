@@ -1,13 +1,38 @@
 body {
   padding-top: 50px;
+  font-size: 26px;
+  background: url('http://parisbytrain.com/wp-content/uploads/2014/02/paris-city-sunset-rain-eiffel-tower.jpg');
+  display: compact;
+  color: white;
+  background-size: 1600px 1000px;
+  background-attachment: fixed;
+  background-repeat:no-repeat;
 }
+
+
 .starter-template {
   padding: 40px 15px;
   text-align: center;
 }
 
-#map { height: 495px; 
-       width: 800px;
+.starter-template2 {
+  padding: 5px 15px;
+  text-align: center;
+}
+
+.container-fluid{
+  padding-left:100px;
+  padding-right:70px;
+}
+
+
+#map { height: 600px; 
+       width: 1200px;
        margin-left: 200px;
-       margin-top: 30px;
+       margin-top: 0px;
      }
+
+.container{
+  padding-top: 60px;
+  padding-bottom: 20px;
+}
