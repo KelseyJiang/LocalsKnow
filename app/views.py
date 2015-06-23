@@ -9,7 +9,9 @@ import globals
 
 db = mdb.connect(user= globals.webuser, host= globals.webhost, db="HelloParis", charset='utf8')
 
-# @app.route('/')
+@app.route('/')
+def homing():
+    return render_template("input.html")
 # @app.route('/index')
 # def index():
 #     return render_template("index.html",
