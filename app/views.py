@@ -12,7 +12,12 @@ db = mdb.connect(user= globals.webuser, host= globals.webhost, db="HelloParis", 
 @app.route('/')
 def homing():
     return render_template("input.html")
-# @app.route('/index')
+
+
+@app.route('/index')
+def webindex():
+    return render_template("input.html")
+
 # def index():
 #     return render_template("index.html",
 #        title = 'Home', user = { 'nickname': 'Miguel' },
@@ -54,10 +59,11 @@ def cities_output():
   rankby = assign_datatable(lang = language)[1]
   #mydatatable = assign_datatable(lang = language, city = city)[0]
   #rankby = assign_datatable(lang = language, city = city)[1]
-  col = ['#6E6E6E', '#FF0000','#610B0B', '#01DFD7', '#DF7401','#DBA901', '#D7DF01', '#A5DF00', '#74DF00','#3ADF00','#00BFFF','#0080FF','#0040FF','#0000FF','#4000FF','#FE2EF7', '#5F4C0B','#61380B','#2E2E2E']
-  #col = ['#2E2E2E','#DF0101','#8A0808','#FF8000','#BFFF00','#40FF00','#00FFFF','#0040FF','#8000FF','#F781F3','#F5A9BC','#FF8000','#B18904','#B18904','#B18904','#B18904','#B18904','#B18904','#B18904','#B18904']
+  #col = ['#6E6E6E', '#FF0000','#610B0B', '#01DFD7','#DF7401','#DBA901','#D7DF01','#A5DF00','#74DF00','#3ADF00','#00BFFF','#0080FF','#0040FF','#0000FF','#4000FF','#FE2EF7', '#5F4C0B','#61380B','#2E2E2E']
  
+  #col =  ['#6E6E6E','#FF0303','#F16701','#EA9A01','#E3CC00','#DDFF00','#B6FF00','#90FF00','#6AFF00','#44FF00','#33F33F','#22E87E','#11DDBD','#00D2FC','#069DED','#0D69DF','#1334D0','#1A00C2','#FF00FF']
  
+  col = ['#6E6E6E','#FF0202','#FF4A02','#FFB002','#FFF302','#A7FF02','#40FF00','#167139','#00FFDE','#00B3FF','#1456FC','#6072E8','#1C1CFD','#761CFD','#B453E9','#F300FF','#55541C','#463011','#284100']
   with db:
     cur = db.cursor()
     #just select the city from the world_innodb that the user inputs

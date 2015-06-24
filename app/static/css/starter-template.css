@@ -1,38 +1,91 @@
+html {height:100%;}
+
 body {
   padding-top: 50px;
   font-size: 26px;
-  background: url('http://parisbytrain.com/wp-content/uploads/2014/02/paris-city-sunset-rain-eiffel-tower.jpg');
+  background: url('../frontpage.jpg') no-repeat center center fixed; */
   display: compact;
   color: white;
-  background-size: 1600px 1000px;
+  text-align: center;
+  background-size: cover;
   background-attachment: fixed;
   background-repeat:no-repeat;
+  vertical-align: middle;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
 }
 
 
 .starter-template {
-  padding: 40px 15px;
+  padding: 60px 15px;
   text-align: center;
+  vertical-align: middle;
 }
 
 .starter-template2 {
-  padding: 5px 15px;
+  padding: 0px 0px; 
+  width:100%
+}
+
+.container_radio {
+  padding-top: 190px;
   text-align: center;
 }
 
 .container-fluid{
-  padding-left:100px;
-  padding-right:70px;
+  padding-left:13%;
+  padding-right:13%;
+  text-align: center;
+}
+
+.container_header{
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-left: 60px;
+  text-align: center;
 }
 
 
-#map { height: 600px; 
-       width: 1200px;
-       margin-left: 200px;
-       margin-top: 0px;
+#map { height: 100%; 
+       width: 100%;
+       margin-top: 0;
+       margin-bottom: 0;
+       position:relative;
      }
 
 .container{
-  padding-top: 60px;
+  padding-top: 0px;
   padding-bottom: 20px;
+  text-align: center;
 }
+
+.container_map{
+  height: 600px;
+  padding-top: 0px;
+  padding-bottom: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+  position: relative
+}
+
+
+.frontbtn{ margin-top:20px;
+     }
+
+.split-para      { 
+  font-size: 35px;
+  display:block;
+  margin-left:0px;
+}
+  
+.split-para span { 
+  font-size: 35px;
+  display:block;
+  float:right;
+  width:50%;
+}
+
