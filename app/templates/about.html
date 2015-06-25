@@ -17,8 +17,6 @@
     <!-- Custom styles for this template -->
     <link href="{{ url_for('static', filename='css/template.css') }}" rel="stylesheet">
     
-
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -27,7 +25,6 @@
   </head>
 
   <body>
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container_header">
         <div class="navbar-header">
@@ -49,14 +46,30 @@
     </nav>
 
 <br><br>
+
      <div id="bg">
 			<div class="bg-image" style="background-image: {{url_for('static', filename='paris.jpg')}}")" ;="">
 			</div> 
 	 </div>
-    <div class="container">
-      <div class="template">
-          <p style='font-size: 100px; color: white'>Locals Know!</p>       
+	 
+    <div class="template">
+        <h3>Created by Kelsey Jiang</h2>
+        <a href="https://github.com/KelseyJiang/mywebsite" target="_blank"><img src="{{ url_for('static', filename='css/icons/github.png') }}" width="46" height="46" alt="Twitter" /></a>
+        <a href="https://www.linkedin.com/in/kelseyjiang" target="_blank"><img src="{{ url_for('static', filename='css/icons/linkedin.png') }}" width="55" height="48" alt="LinkedIn" /></a>
     </div>
+
+{% block content %}
+  <iframe src="https://www.slideshare.net/slideshow/embed_code/key/IXBTP1IX8bIn9B" frameborder="0"  width="800" height="600" scrolling="no" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+{% endblock content %}
+<!-- 
+     
+    <div class="container">
+
+      <div class="template">
+          <p style='font-size: 100px; color: white'>Locals Know!</p>
+          
+      </div>
 
       <div class = "container_radio" align="center" valign="center" >
       <p style='font-size: 40px; color: white'>Discover Paris as: </p>
@@ -73,9 +86,10 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
 
-    </div> <!-- /.container-->
+  </div> <!~~ /.container~~>
+ -->
 
-    <!-- Photo Credit -->
+   <!-- Photo Credit -->
     <div class="photo-credit" style="text-align:right; position: absolute; bottom: 0; right: 0; ">
         <p style='font-size: 15px; color: white'>Photo Credit: parisbytrain.com</p> 
     </div>

@@ -18,34 +18,11 @@ def homing():
 def webindex():
     return render_template("input.html")
 
-# def index():
-#     return render_template("index.html",
-#        title = 'Home', user = { 'nickname': 'Miguel' },
-#        )
-# 
-# @app.route('/db')
-# def cities_page():
-#     with db:
-#         cur = db.cursor()
-#         cur.execute("SELECT Name FROM City LIMIT 15;")
-#         query_results = cur.fetchall()
-#     cities = ""
-#     for result in query_results:
-#         cities += result[0]
-#         cities += "<br>"
-#     return cities
+@app.route('/about')
+def about():
+    return render_template("about.html")
 
-@app.route("/db_test")
-def sites_fancy():
-    with db:
-        cur = db.cursor()
-        cur.execute("SELECT * FROM eng_den_utm_cluster ORDER BY eng_count DESC;")
-        query_results = cur.fetchall()
-    sites = []
-    for result in query_results:
-        sites.append(dict(name=result[1], latitude=result[3], longitude = result[4]))
-    return render_template('cities.html', cities=cities)
-    
+
 @app.route('/input')
 def cities_input():
   return render_template("input.html")
