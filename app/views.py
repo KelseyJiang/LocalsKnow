@@ -51,7 +51,9 @@ def cities_output():
     sites = []
     site_color =[]
     for result in query_results:
-        sites.append(dict(name=result[0], latitude=result[2], longitude = result[3], cluster = result[4], url = '<a><img src=%s height=\'250px\' width=\'250px\'></a>' % result[5]))
+        sites.append(dict(name=result[0], latitude=result[2], longitude = result[3], cluster = result[4], url = '<a><img src=%s height=\'300px\' width=\'250px\'/></a>' % result[5]))
+#        sites.append(dict(name=result[0], latitude=result[2], longitude = result[3], cluster = result[4], url = '<div class = "popup" ><img src=%s height=\'300px\' width=\'250px\'/><p style="color: Black; font-size:20px">%s</b></div>' % (result[5],result[0])))
+
         #sites.append(dict(name=result[0], latitude=result[2], longitude = result[3], cluster = result[4])) 
     site_coords = [(site['latitude'], site['longitude']) for site in sites]
     site_cluster = [site['cluster']+1 for site in sites]
@@ -61,13 +63,37 @@ def cities_output():
     for i in range(len(site_coords)):
         site_color.append(col[site_cluster[i]])
         print col[site_cluster[i]]
+    
+    if language == "english":
+           greetings = "Here's where English speakers go!"
+            # bar = col[1:16]
+#             bar.append(col[0])
+#             for c in bar:
+#                 colcode.append(dict(name = "<div class='colorbar' style = "+"float:left; background-color: %s; color: %s;" % (c,c) +" width:{:.2%}".format(1.0/16.0)+">___</div>")) 
+           colcode = "https://photos-1.dropbox.com/t/2/AABaVbHSCvtBNkcjyQt3Dfj6_TPf-z9US5A6d2_rFjQsDw/12/36938184/jpeg/32x32/1/_/1/2/english.tiff/CMjDzhEgASACIAMgBCAFIAYgBygBKAI/ehpdg-Sr3_ZZe9CWH9qcD92MKZJJFM9seiHS1idt1W0?size=1280x960&size_mode=2"
+    elif language == "french": 
+           greetings = "Here's where Frensh speakers go!"
+           #  bar = col[1:19]
+#             bar.append(col[0])
+#             for c in bar:
+#                 colcode.append(dict(name = "<div class='colorbar' style = "+"float:left; background-color: %s; color: %s;" % (c,c) +" width:{:.2%}".format(1.0/19.0)+">___</div>")) 
+           colcode = "https://photos-6.dropbox.com/t/2/AADTf2-uCd2YedavGMGshcV547Xagpv4SslRFx0hwFSl8Q/12/36938184/jpeg/32x32/1/_/1/2/french.tiff/CMjDzhEgASACIAMgBCAFIAYgBygBKAI/w3XihXKi7FIEdAbkHvZg-mIfIDp-zKOa0esmqZj-RDM?size=1280x960&size_mode=2"
+    else:
+         greetings = "Here's where Parisian locals go!"
+        # bar = col[1:11]
+#         bar.append(col[0])
+#         for c in bar:
+#                 colcode.append(dict(name = "<div class='colorbar' style = "+"float:left; background-color: %s; color: %s;" % (c,c) +" width:{:.2%}".format(1.0/11.0)+">___</div>")) 
+         colcode = "https://photos-2.dropbox.com/t/2/AADl3Eu2pvGYJJQW3jW9rtZJxs17bnsfM0W06FGt4aMo4Q/12/36938184/jpeg/32x32/1/_/1/2/locals.tiff/CMjDzhEgASACIAMgBCAFIAYgBygBKAI/mBdEKcsBQ7S91tHAiNNwOqij0enApw8OudZUafms5-U?size=1280x960&size_mode=2"
         
     return render_template('output.html', 
                             cities=sites, 
                             name = json.dumps(list(site_name)),
                             coords = json.dumps(list(site_coords)),
                             color = json.dumps(list(site_color)),
+                            colorcode = colcode,
                             url = json.dumps(list(site_url)), #added
+                            greetings = greetings,
                             length = len(site_coords))
   
  #  #call a function from a_Model package. note we are only pulling one result in the query
