@@ -7,7 +7,7 @@ import json
 import globals
 
 
-db = mdb.connect(user= globals.webuser, host= globals.webhost, db="HelloParis", charset='utf8')
+
 
 @app.route('/')
 def homing():
@@ -29,6 +29,7 @@ def cities_input():
 
 @app.route('/output')
 def cities_output():
+  db = mdb.connect(user= globals.webuser, host= globals.webhost, db="HelloParis", charset='utf8')
   #pull 'language' and 'city' from input field and store it
   language = request.args.get('language')
   #city = request.args.get('city')
@@ -43,7 +44,6 @@ def cities_output():
   col = ['#6E6E6E','#FF0202','#FF4A02','#FFB002','#FFF302','#A7FF02','#40FF00','#167139','#00FFDE','#00B3FF','#1456FC','#6072E8','#1C1CFD','#761CFD','#B453E9','#F300FF','#55541C','#463011','#284100']
   with db:
     cur = db.cursor()
-    #just select the city from the world_innodb that the user inputs
     cur.execute("SELECT loc_name, loc_id, loc_latitude, loc_longitude, cluster, photo FROM %s ORDER BY %s DESC;" % (mydatatable, rankby))
     query_results = cur.fetchall()
     
@@ -52,9 +52,6 @@ def cities_output():
     site_color =[]
     for result in query_results:
         sites.append(dict(name=result[0], latitude=result[2], longitude = result[3], cluster = result[4], url = '<a><img src=%s height=\'300px\' width=\'250px\'/></a>' % result[5]))
-#        sites.append(dict(name=result[0], latitude=result[2], longitude = result[3], cluster = result[4], url = '<div class = "popup" ><img src=%s height=\'300px\' width=\'250px\'/><p style="color: Black; font-size:20px">%s</b></div>' % (result[5],result[0])))
-
-        #sites.append(dict(name=result[0], latitude=result[2], longitude = result[3], cluster = result[4])) 
     site_coords = [(site['latitude'], site['longitude']) for site in sites]
     site_cluster = [site['cluster']+1 for site in sites]
     site_name = [site['name'] for site in sites]
@@ -62,29 +59,16 @@ def cities_output():
     
     for i in range(len(site_coords)):
         site_color.append(col[site_cluster[i]])
-        print col[site_cluster[i]]
     
     if language == "english":
            greetings = "Here's where English speakers go!"
-            # bar = col[1:16]
-#             bar.append(col[0])
-#             for c in bar:
-#                 colcode.append(dict(name = "<div class='colorbar' style = "+"float:left; background-color: %s; color: %s;" % (c,c) +" width:{:.2%}".format(1.0/16.0)+">___</div>")) 
-           colcode = "https://photos-1.dropbox.com/t/2/AABaVbHSCvtBNkcjyQt3Dfj6_TPf-z9US5A6d2_rFjQsDw/12/36938184/jpeg/32x32/1/_/1/2/english.tiff/CMjDzhEgASACIAMgBCAFIAYgBygBKAI/ehpdg-Sr3_ZZe9CWH9qcD92MKZJJFM9seiHS1idt1W0?size=1280x960&size_mode=2"
+           colcode = "/static/english.png"
     elif language == "french": 
-           greetings = "Here's where Frensh speakers go!"
-           #  bar = col[1:19]
-#             bar.append(col[0])
-#             for c in bar:
-#                 colcode.append(dict(name = "<div class='colorbar' style = "+"float:left; background-color: %s; color: %s;" % (c,c) +" width:{:.2%}".format(1.0/19.0)+">___</div>")) 
-           colcode = "https://photos-6.dropbox.com/t/2/AADTf2-uCd2YedavGMGshcV547Xagpv4SslRFx0hwFSl8Q/12/36938184/jpeg/32x32/1/_/1/2/french.tiff/CMjDzhEgASACIAMgBCAFIAYgBygBKAI/w3XihXKi7FIEdAbkHvZg-mIfIDp-zKOa0esmqZj-RDM?size=1280x960&size_mode=2"
+           greetings = "Here's where French speakers go!"
+           colcode = "/static/french.png"
     else:
          greetings = "Here's where Parisian locals go!"
-        # bar = col[1:11]
-#         bar.append(col[0])
-#         for c in bar:
-#                 colcode.append(dict(name = "<div class='colorbar' style = "+"float:left; background-color: %s; color: %s;" % (c,c) +" width:{:.2%}".format(1.0/11.0)+">___</div>")) 
-         colcode = "https://photos-2.dropbox.com/t/2/AADl3Eu2pvGYJJQW3jW9rtZJxs17bnsfM0W06FGt4aMo4Q/12/36938184/jpeg/32x32/1/_/1/2/locals.tiff/CMjDzhEgASACIAMgBCAFIAYgBygBKAI/mBdEKcsBQ7S91tHAiNNwOqij0enApw8OudZUafms5-U?size=1280x960&size_mode=2"
+         colcode = "/static/locals.png"
         
     return render_template('output.html', 
                             cities=sites, 
@@ -96,8 +80,3 @@ def cities_output():
                             greetings = greetings,
                             length = len(site_coords))
   
- #  #call a function from a_Model package. note we are only pulling one result in the query
-#   pop_input = cities[0]['latitude']
-#   the_result = ""
-#   #the_result = ModelIt(city, pop_input)
-#   return render_template("output.html", cities = sites, the_result = the_result)
