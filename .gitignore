@@ -4,3 +4,5 @@ config.py
 app/templates/cities.html
 
 app/templates/output_backup.html
+
+app/templates/index.html
