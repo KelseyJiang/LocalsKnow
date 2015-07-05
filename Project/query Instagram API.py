@@ -11,11 +11,8 @@ import json
 import requests
 import time, datetime
 
-'''
-Querying Instagram API for geo-tagged media 
-within 5km radius from the Center of Paris
-during July 2014 
-'''
+
+# Querying Instagram API for geo-tagged media within 5km radius from the Center of Paris during July 2014 
 
 # I: Define parameters
 # 1) Time Frame
