@@ -1,26 +1,11 @@
-# Export from IPython Notebook
+''' This file is exported from IPython Notebook'''
 get_ipython().magic(u'matplotlib inline')
-import pymysql as mdb
+from sqlalchemy import *
 import pandas as pd
-import collections
-import numpy as np
-import json
 import requests
 import time, datetime
-import re #regular expression for removing emoji
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-from sqlalchemy import create_engine
-from sqlalchemy.types import String 
-from sqlalchemy import *
-from math import sqrt
-from sklearn.cluster import DBSCAN
-from sklearn import metrics
-from sklearn.datasets.samples_generator import make_blobs
-from sklearn.preprocessing import StandardScaler
-from pyproj import Proj
-from langdetect import  detect_langs
+import numpy as np
+import json
 from geopy.distance import great_circle
 
 sns.set_context('talk')
@@ -34,7 +19,7 @@ server='localhost'
 databaseName='HelloParis'
 tableName='GPS_language'
 
-#Create connection with sql database
+#Create connection with MySQL database
 engineString = 'mysql+pymysql://'+ username +':'+ password +'@'+ server +'/'+databaseName + '?charset=utf8mb4'
 sqlEngine = create_engine(engineString)
 

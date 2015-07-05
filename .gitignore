@@ -6,3 +6,5 @@ app/templates/cities.html
 app/templates/output_backup.html
 
 app/templates/index.html
+
+Project/more database cleaning.py

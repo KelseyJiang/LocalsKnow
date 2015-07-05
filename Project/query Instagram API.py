@@ -1,4 +1,4 @@
-# Export from IPython Notebook
+''' This file is exported from IPython Notebook'''
 # Paris July Database
 # Retrieving JSON data from Instagram API 
 
@@ -85,6 +85,5 @@ def build_table(interval):
 
 
 # III: Assemble Paris Database
-
 insta_paris = build_table(interval)
 insta_paris.to_csv('insta_paris_July.csv',encoding='utf-8',index=False) 

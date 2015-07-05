@@ -1,4 +1,4 @@
-# Export from IPython Notebook
+''' This file is exported from IPython Notebook'''
 # Use geo-location tags to identify the corresponding attractions
 get_ipython().magic(u'matplotlib inline')
 import pymysql as mdb
@@ -105,16 +105,10 @@ all_loc = pd.concat([loc_id_nm_4800,loc_id_nm_9600,loc_id_nm_14400,loc_id_nm_192
 paris_lang_loc = pd.concat([paris_csv, all_loc], axis=1)
 
 
-# # Export as .csv
+# Export as .csv file
 paris_lang_loc.to_csv('paris_lang_loc.csv',encoding='utf-8',index=False)
 
 
 # Save dataframe to MySQL Database
 engine = create_engine("mysql+pymysql://root:@localhost/HelloParis?charset=utf8mb4") 
 paris_lang_loc.to_sql('paris_lang_loc', engine, if_exists='replace', index=True)
-
-
-# In[ ]:
-
-
-
