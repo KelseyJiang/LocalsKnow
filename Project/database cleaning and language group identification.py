@@ -1,4 +1,4 @@
-''' This file is exported from IPython Notebook'''
+# This file is exported from IPython Notebook
 get_ipython().magic(u'matplotlib inline')
 from instagram.client import InstagramAPI
 import pandas as pd

@@ -1,4 +1,4 @@
-''' This file is exported from IPython Notebook'''
+# This file is exported from IPython Notebook
 # Query Foursquare API to obtain representative photos of each attraction
 
 get_ipython().magic(u'matplotlib inline')

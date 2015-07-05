@@ -1,4 +1,4 @@
-''' This file is exported from IPython Notebook'''
+# This file is exported from IPython Notebook
 get_ipython().magic(u'matplotlib inline')
 import pandas as pd
 import numpy as np
@@ -83,7 +83,7 @@ fr_top_200 = julydf.sort('fr_favorite',ascending = False)[0:200].reset_index(dro
 local_top_200 = julydf.sort('local_favorite',ascending = False)[0:200].reset_index(drop= True)
 
 
-'''
+"""
 DBSCAN parameters:
 EPS (the maximum distance between two attractions for them to be considered as in the same neighborhood) 
 EPS was set to be 0.20 (on the actual map, it corresponds to 300 meters, the distance that can be reached by 4 mins casual walking) for all three groups
@@ -94,7 +94,7 @@ MINSAMPLE for French speaking visitors = 0.8% total French Speakers
 MINSAMPLE for Locals = 0.8% total locals
 
 GPS coordinates were converted to UTM coordinates for DBSCAN in order to minimize spatial distortion 
-'''
+"""
 EPS = 0.20 
 MINSAMPLE = 80
 

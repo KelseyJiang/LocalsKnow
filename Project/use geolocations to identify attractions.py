@@ -1,4 +1,4 @@
-''' This file is exported from IPython Notebook'''
+# This file is exported from IPython Notebook
 # Use geo-location tags to identify the corresponding attractions
 get_ipython().magic(u'matplotlib inline')
 import pymysql as mdb

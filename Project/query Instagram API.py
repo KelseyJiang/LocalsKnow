@@ -1,4 +1,4 @@
-''' This file is exported from IPython Notebook'''
+# This file is exported from IPython Notebook
 # Paris July Database
 # Retrieving JSON data from Instagram API 
 
